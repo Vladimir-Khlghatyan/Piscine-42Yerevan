@@ -1,0 +1,5 @@
+Credentials cache: API:7F08A1E8-BF7C-4E44-88EA-2454C20CB25A
+        Principal: vkhlghat@42YEREVAN.AM
+
+  Issued                Expires               Principal
+Oct 16 17:36:34 2021  Oct 17 03:36:27 2021  krbtgt/42YEREVAN.AM@42YEREVAN.AM
