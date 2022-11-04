@@ -11,67 +11,44 @@
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
-
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
 
 void	ft_print_num2(int a, int b, int c, int d)
 {
 	if ((a * 10 + b) < (c * 10 + d))
 	{
-		ft_putchar(a);
-		ft_putchar(b);
-		ft_putchar(' ');
-		ft_putchar(c);
-		ft_putchar(d);
+		write(1, &a, 1);
+		write(1, &b, 1);
+		write(1, " ", 1);
+		write(1, &c, 1);
+		write(1, &d, 1);
 		if (a < '9' || b < '8' || c < '9' || d < '9')
-		{
-			ft_putchar(',');
-			ft_putchar(' ');
-		}
+			write(1, ", ", 2);
 	}
-}
-
-void	ft_for_while(int a, int b, int c, int d)
-{
-	while (a <= '9')
-	{
-		while (b <= '9')
-		{
-			while (c <= '9')
-			{
-				while (d <= '9')
-				{
-					ft_print_num2(a, b, c, d);
-					d++;
-				}
-				d = '0';
-				c++;
-			}
-			d = '0';
-			c = '0';
-			b++;
-		}
-		d = '0';
-		c = '0';
-		b = '0';
-		a++;
-	}	
 }
 
 void	ft_print_comb2(void)
 {
-	int	a;
-	int	b;
-	int	c;
-	int	d;
+	int	n[4];
 
-	a = '0';
-	b = '0';
-	c = '0';
-	d = '1';
-	ft_for_while(a, b, c, d);
+	n[0] = '0' - 1;
+	n[1] = '0' - 1;
+	n[2] = '0' - 1;
+	n[3] = '1';
+	while (++n[0] <= '9')
+	{
+		while (++n[1] <= '9')
+		{
+			while (++n[2] <= '9')
+			{
+				while (n[3] <= '9')
+					ft_print_num2(n[0], n[1], n[2], n[3]++);
+				n[3] = '0';
+			}
+			n[3] = '0';
+			n[2] = '0' - 1;
+		}
+		n[3] = '0';
+		n[2] = '0' - 1;
+		n[1] = '0' - 1;
+	}
 }

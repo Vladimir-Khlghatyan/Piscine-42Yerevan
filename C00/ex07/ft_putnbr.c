@@ -11,28 +11,17 @@
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
-
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
 
 void	ft_putnbr(int nb)
 {
-	int	x;
+	unsigned int	x;
+	char			c;
 
 	x = nb;
-	if (x < 0)
+	if (nb < 0)
 	{
-		ft_putchar('-');
-		if (x == -2147483648)
-		{
-			ft_putchar('2');
-			x = 147483648;
-		}
-		else
-			x = -x;
+		write(1, "-", 1);
+		x = -nb;
 	}
 	if (x > 9)
 	{
@@ -40,5 +29,8 @@ void	ft_putnbr(int nb)
 		ft_putnbr(x % 10);
 	}
 	else
-		ft_putchar(x + '0');
+	{
+		c = x + '0';
+		write(1, &c, 1);
+	}
 }

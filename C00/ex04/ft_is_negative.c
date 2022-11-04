@@ -11,16 +11,11 @@
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
 
 void	ft_is_negative(int n)
 {
-	int	c;
-
-	c = n;
 	if (n < 0)
-		c = 78;
+		write(1, "N", 1);
 	else
-		c = 80;
-	write(1, &c, 1);
+		write(1, "P", 1);
 }

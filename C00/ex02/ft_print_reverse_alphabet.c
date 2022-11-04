@@ -11,16 +11,12 @@
 /* ************************************************************************** */
 
 #include <unistd.h>
-#include <stdio.h>
 
 void	ft_print_reverse_alphabet(void)
 {
 	int	i;
 
-	i = 122;
-	while (i > 96)
-	{
+	i = 123;
+	while (--i > 96)
 		write(1, &i, 1);
-		i--;
-	}
 }

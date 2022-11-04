@@ -12,19 +12,15 @@
 
 #include <unistd.h>
 
-void	ft_putchar(char c)
+void	ft_print(int *t, int count)
 {
-	write (1, &c, 1);
-}
-
-void	ft_print(int *t, int qanak)
-{
-	int	i;
-	int	is_valid;
+	int		i;
+	int		is_valid;
+	char	c;
 
 	i = 1;
 	is_valid = 1;
-	while (i < qanak)
+	while (i < count)
 	{
 		if (t[i - 1] >= t[i])
 			is_valid = 0;
@@ -33,27 +29,30 @@ void	ft_print(int *t, int qanak)
 	if (is_valid)
 	{
 		i = 0;
-		while (i < qanak)
-			ft_putchar(t[i++] + '0');
-		if (t[0] < (10 - qanak))
+		while (i < count)
 		{
-			ft_putchar(',');
-			ft_putchar(' ');
+			c = t[i++] + '0';
+			write(1, &c, 1);
 		}
+		if (t[0] < (10 - count))
+			write(1, ", ", 2);
 	}
 }
 
-int	ft_initial(int i)
+int	ft_initial(int n)
 {
-	while (i < 10)
+	char	c;
+	int		i;
+
+	if (n != 1)
+		return (0);
+	i = -1;
+	while (++i < 10)
 	{
-		ft_putchar(i + '0');
+		c = i + '0';
+		write(1, &c, 1);
 		if (i != 9)
-		{
-			ft_putchar(',');
-			ft_putchar(' ');
-		}
-		i++;
+			write(1, ", ", 2);
 	}
 	return (i);
 }
@@ -63,9 +62,7 @@ void	ft_print_combn(int n)
 	int	i;
 	int	tab[9];
 
-	i = 0;
-	if (n == 1)
-		i = ft_initial(i);
+	i = ft_initial(n);
 	while (i < n)
 		tab[i++] = 0;
 	while (tab[0] <= (10 - n) && n > 1)
@@ -75,8 +72,7 @@ void	ft_print_combn(int n)
 		i = n;
 		while (i && n > 1)
 		{
-			i--;
-			if (tab[i] > 9)
+			if (tab[--i] > 9)
 			{
 				tab[i - 1]++;
 				tab[i] = 0;
