@@ -6,42 +6,28 @@
 /*   By: vkhlghat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 13:58:10 by vkhlghat          #+#    #+#             */
-/*   Updated: 2021/10/27 17:25:50 by vkhlghat         ###   ########.fr       */
+/*   Updated: 2022/11/06 17:25:50 by vkhlghat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isspace(char c)
-{
-	if (c == '\t' || c == '\v' || c == '\n' || \
-			c == '\r' || c == '\f' || c == ' ')
-		return (1);
-	else
-		return (0);
-}
+#include <stdio.h>
 
 int	ft_atoi(char *str)
 {
-	int		i;
-	int		nshan;
-	int		tiv;
+	int	num;
+	int	sign;
+	int	i;
 
+	num = 0;
+	sign = 1;
 	i = 0;
-	nshan = 1;
-	tiv = 0;
-	if (!str[i])
-		return (0);
-	while (ft_isspace(str[i]) == 1)
-		i++;
-	while (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			nshan = -nshan;
-		i++;
-	}
+	while (str[i] == '\t' || str[i] == '\n' || str[i] == '\v' || \
+			str[i] == '\f' || str[i] == '\r' || str[i] == ' ')
+			i++;
+	if (str[i] == '+' || str[i] == '-')
+		if (str[i++] == '-')
+			sign = -1;
 	while (str[i] >= '0' && str[i] <= '9')
-	{
-		tiv = (tiv * 10) + (str[i] - 48);
-		i++;
-	}
-	return (tiv * nshan);
+		num = num * 10 + str[i++] - '0';
+	return (num * sign);
 }
