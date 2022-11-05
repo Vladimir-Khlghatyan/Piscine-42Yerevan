@@ -6,33 +6,29 @@
 /*   By: vkhlghat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 22:58:16 by vkhlghat          #+#    #+#             */
-/*   Updated: 2021/10/25 15:46:10 by vkhlghat         ###   ########.fr       */
+/*   Updated: 2022/11/05 15:46:10 by vkhlghat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 unsigned int	ft_strlcat(char *dest, char *src, unsigned int size)
 {
-	unsigned int	i_dest;
-	unsigned int	j_src;
+	unsigned int	i;
+	unsigned int	j;
 	unsigned int	res;
 
-	i_dest = 0;
-	while (dest[i_dest] != '\0')
-		i_dest++;
+	i = 0;
+	while (dest[i])
+		i++;
 	res = 0;
-	while (src[res] != '\0')
+	while (src[res])
 		res++;
-	if (size <= i_dest)
+	if (size <= i)
 		res += size;
 	else
-		res += i_dest;
-	j_src = 0;
-	while (src[j_src] != '\0' && i_dest + 1 < size)
-	{
-		dest[i_dest] = src[j_src];
-		i_dest++;
-		j_src++;
-	}
-	dest[i_dest] = '\0';
+		res += i;
+	j = -1;
+	while (src[++j] && i + 1 < size)
+		dest[i++] = src[j];
+	dest[i] = '\0';
 	return (res);
 }
