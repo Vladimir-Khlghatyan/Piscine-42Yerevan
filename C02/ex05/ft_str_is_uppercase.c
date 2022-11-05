@@ -6,25 +6,19 @@
 /*   By: vkhlghat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 15:20:27 by vkhlghat          #+#    #+#             */
-/*   Updated: 2021/10/24 15:20:42 by vkhlghat         ###   ########.fr       */
+/*   Updated: 2022/11/06 15:20:42 by vkhlghat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_str_is_uppercase(char *str)
-
 {
 	int	i;
-	int	p;
 
-	i = 0;
-	if (!*(str + i))
+	if (!str || !str[0])
 		return (1);
-	while (*(str + i))
-	{
-		p = (*(str + i) >= 'A' && *(str + i) <= 'Z');
-		if (!p)
+	i = -1;
+	while (str[++i])
+		if (str[i] < 'A' || str[i] > 'Z')
 			return (0);
-		i++;
-	}
 	return (1);
 }

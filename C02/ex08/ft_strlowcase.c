@@ -6,22 +6,19 @@
 /*   By: vkhlghat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/24 15:18:10 by vkhlghat          #+#    #+#             */
-/*   Updated: 2021/10/24 15:18:26 by vkhlghat         ###   ########.fr       */
+/*   Updated: 2022/11/06 15:18:26 by vkhlghat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strlowcase(char	*str)
 {
 	int	i;
-	int	p;
 
-	i = 0;
-	while (*(str + i))
-	{
-		p = (*(str + i) >= 'A' && *(str + i) <= 'Z');
-		if (p)
+	if (!str)
+		return (str);
+	i = -1;
+	while (str[++i])
+		if (str[i] >= 'A' && str[i] <= 'Z')
 			str[i] = str[i] + 32;
-		i++;
-	}
 	return (str);
 }

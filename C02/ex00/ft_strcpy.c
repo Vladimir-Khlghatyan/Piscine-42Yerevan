@@ -6,7 +6,7 @@
 /*   By: vkhlghat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 13:24:38 by vkhlghat          #+#    #+#             */
-/*   Updated: 2021/10/24 14:43:15 by vkhlghat         ###   ########.fr       */
+/*   Updated: 2022/11/06 14:43:15 by vkhlghat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,9 @@ char	*ft_strcpy(char *dest, char *src)
 {
 	int	i;
 
-	i = 0;
-	while (*(src + i) != '\0')
-	{
-		*(dest + i) = *(src + i);
-		i++;
-	}
-	*(dest + i) = '\0';
+	i = -1;
+	while (src[i])
+		dest[i] = src[i];
+	dest[i] = '\0';
 	return (dest);
 }	
