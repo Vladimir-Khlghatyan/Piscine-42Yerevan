@@ -6,7 +6,7 @@
 /*   By: vkhlghat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/31 20:53:58 by vkhlghat          #+#    #+#             */
-/*   Updated: 2021/11/01 21:33:06 by vkhlghat         ###   ########.fr       */
+/*   Updated: 2022/11/08 21:33:06 by vkhlghat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ char	*ft_strdup(char *src)
 	char	*dest;
 	int		i;
 
+	if (!str)
+		return (NULL);
 	i = 0;
 	while (src[i])
 		i++;

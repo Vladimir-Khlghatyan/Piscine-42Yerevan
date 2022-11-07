@@ -6,7 +6,7 @@
 /*   By: vkhlghat <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 11:07:24 by vkhlghat          #+#    #+#             */
-/*   Updated: 2021/11/02 12:16:17 by vkhlghat         ###   ########.fr       */
+/*   Updated: 2022/11/08 12:16:17 by vkhlghat         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	ft_strlen(char *str)
 {
 	int	i;
 
+	if (!str)
+		return (0);
 	i = 0;
 	while (str[i])
 		i++;
@@ -24,44 +26,39 @@ int	ft_strlen(char *str)
 
 int	ft_len_of_strs(int size, char **strs, char *sep)
 {
-	int	len_of_strs;
+	int	len;
 	int	i;
 
-	len_of_strs = 0;
-	i = 0;
-	while (i < size)
+	len = 0;
+	i = -1;
+	while (++i < size)
 	{
-		len_of_strs += ft_strlen(strs[i]);
+		len += ft_strlen(strs[i]);
 		if (i < size - 1)
-			len_of_strs += ft_strlen(sep);
-		i++;
+			len += ft_strlen(sep);
 	}
-	return (len_of_strs);
+	return (len);
 }
 
 char	*ft_malloc(int size, char **strs, char *sep)
 {
-	int		len_of_strs;
+	int		len;
 	char	*str;
 
 	if (size <= 0)
 		return (NULL);
-	len_of_strs = ft_len_of_strs(size, strs, sep);
-	str = (char *)malloc(sizeof(char) * (len_of_strs + 1));
-	if (str == NULL)
-		return (0);
+	len = ft_len_of_strs(size, strs, sep);
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (!str)
+		return (NULL);
 	return (str);
 }
 
 char	*ft_sep(char *sep, char *str, int b, int n)
 {
-	b = 0;
-	while (sep[b])
-	{
-		str[n] = sep[b];
-		b++;
-		n++;
-	}
+	b = -1;
+	while (sep[++b])
+		str[n++] = sep[b];
 	return (str);
 }
 
@@ -81,10 +78,7 @@ char	*ft_strjoin(int size, char **strs, char *sep)
 	{
 		b = -1;
 		while (strs[a][++b])
-		{
-			str[n] = strs[a][b];
-			n++;
-		}
+			str[n++] = strs[a][b];
 		if (a == size - 1)
 			break ;
 		str = ft_sep(sep, str, b, n);
